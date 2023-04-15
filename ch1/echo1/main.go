@@ -14,9 +14,10 @@ import (
 
 func main() {
 	var s, sep string
-	for i := 1; i < len(os.Args); i++ {
+	// print each argument on a separate line
+	for i := 0; i < len(os.Args); i++ {
 		s += sep + os.Args[i]
-		sep = " "
+		sep = "\n"
 	}
 	fmt.Println(s)
 }

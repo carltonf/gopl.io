@@ -14,9 +14,10 @@ import (
 
 func main() {
 	s, sep := "", ""
-	for _, arg := range os.Args[1:] {
+	// Print each argument on a separate line
+	for _, arg := range os.Args {
 		s += sep + arg
-		sep = " "
+		sep = "\n"
 	}
 	fmt.Println(s)
 }
