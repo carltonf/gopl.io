@@ -15,6 +15,7 @@ import (
 //!+
 func main() {
 	// print os.Args with each element on a new line
+	// TODO not feasible to add index?
 	fmt.Println(strings.Join(os.Args, "\n"))
 }
 

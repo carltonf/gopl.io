@@ -15,8 +15,9 @@ import (
 func main() {
 	s, sep := "", ""
 	// Print each argument on a separate line
-	for _, arg := range os.Args {
-		s += sep + arg
+	for idx, arg := range os.Args {
+		// combine idx and arg into a single string separated with a space
+		s += sep + fmt.Sprintf("%d %s", idx, arg)
 		sep = "\n"
 	}
 	fmt.Println(s)
