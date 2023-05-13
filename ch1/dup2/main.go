@@ -12,6 +12,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 )
 type line_info struct {
 	count int
@@ -34,11 +35,21 @@ func main() {
 			f.Close()
 		}
 	}
-	for line, info := range counts {
-		if info.count > 1 {
-			fmt.Printf("%d\t%s\t%s\n", info.count, line, info.locations)
-		}
+	// sort by lines before printing
+	keys := make([]string, 0, len(counts))
+	for k := range counts {
+		keys = append(keys, k)
 	}
+	sort.Strings(keys)
+	for _, line := range keys {
+		info := counts[line]
+		fmt.Printf("%d\t%s\t%s\n", info.count, line, info.locations)
+	}
+	// for line, info := range counts {
+	// 	if info.count > 1 {
+	// 		fmt.Printf("%d\t%s\t%s\n", info.count, line, info.locations)
+	// 	}
+	// }
 }
 
 func countLines(f *os.File, counts map[string]*line_info) {
